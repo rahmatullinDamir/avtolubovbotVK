@@ -23,7 +23,7 @@ def nps_filter(message: Message) -> bool:
 
 
 # --- ОБРАБОТКА ОЦЕНОК NPS ---
-@bot.on.message(func=nps_filter, state="*")
+@bot.on.message(func=nps_filter)
 async def process_nps(message: Message):
     payload = json.loads(message.payload)
     order_id = payload["order_id"]
@@ -58,7 +58,7 @@ async def process_nps(message: Message):
         )
 
 
-@bot.on.message(payload={"cmd": "skip_review"}, state="*")
+@bot.on.message(payload={"cmd": "skip_review"})
 async def skip_review(message: Message):
     await bot.state_dispenser.delete(message.peer_id)
     await message.answer("Вы пропустили шаг с отзывом. Спасибо, что выбираете нас! ⚙️❤️", keyboard=main_kb)

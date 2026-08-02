@@ -14,7 +14,7 @@ from states.FSM import OrderForm
 
 
 # === СТАРТ И ВЫБОР РОЛИ ===
-@bot.on.message(text=["Начать", "Старт", "Start"], state="*")
+@bot.on.message(text=["Начать", "Старт", "Start"])
 async def cmd_start(message: Message):
     await bot.state_dispenser.delete(message.peer_id)  # Очищаем стейты
 
@@ -36,13 +36,13 @@ async def cmd_start(message: Message):
 
 
 # Ловим payload (нажатие на инлайн кнопку выбора роли)
-@bot.on.message(payload={"role": "person"}, state="*")
+@bot.on.message(payload={"role": "person"})
 async def role_person_selected(message: Message):
     await message.answer("Отлично! Чем я могу вам помочь сегодня?\nВыберите нужное действие в меню ниже 👇",
                          keyboard=main_kb)
 
 
-@bot.on.message(payload={"role": "company"}, state="*")
+@bot.on.message(payload={"role": "company"})
 async def role_company_selected(message: Message):
     await message.answer(
         "Приветствую корпоративного клиента! 🤝 Сейчас эта функция в разработке. Появится позже. Приносим извинения.")
@@ -50,13 +50,13 @@ async def role_company_selected(message: Message):
 
 # ======================================
 
-@bot.on.message(text="❌ Отменить заказ", state="*")
+@bot.on.message(text="❌ Отменить заказ")
 async def cancel_order(message: Message):
     await bot.state_dispenser.delete(message.peer_id)
     await message.answer("Действие отменено 🚫", keyboard=main_kb)
 
 
-@bot.on.message(text="🚗 Новый заказ", state="*")
+@bot.on.message(text="🚗 Новый заказ")
 async def start_order(message: Message):
     # Получаем данные из стейта, если они есть
     state_data = await bot.state_dispenser.get(message.peer_id)
