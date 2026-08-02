@@ -4,7 +4,7 @@ from datetime import datetime
 from vkbottle.bot import Message
 from vkbottle.dispatch.rules.base import StateRule
 
-from main import bot  # Импортируем инстанс бота
+from env.config import bot
 from env.config import MANAGER_CHAT_ID, MSK
 from services.helpers import abandoned_cart_timer, decode_vin, is_night_time
 from keyboards.keyboards import main_kb, cancel_kb, process_vin_kb, contact_and_cancel_kb, manager_kb, confirm_kb, \

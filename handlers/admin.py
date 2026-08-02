@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 from vkbottle.bot import Message
-from main import bot
+from env.config import bot
 from env.config import MSK
 from services.helpers import get_admins
 from keyboards.keyboards import main_kb

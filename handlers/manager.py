@@ -4,7 +4,7 @@ import re
 
 from vkbottle.bot import Message
 
-from main import bot
+from env.config import bot
 from env.config import MANAGER_CHAT_ID
 from keyboards.keyboards import create_nps_kb
 from services.google_sheet import update_order_and_get_info, update_order_status, update_supplier_number_only

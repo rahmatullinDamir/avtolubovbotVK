@@ -4,7 +4,7 @@ import json
 
 from vkbottle.bot import Message
 
-from main import bot
+from env.config import bot
 from env.config import MANAGER_CHAT_ID, REVIEWS_CHAT_ID
 from keyboards.keyboards import skip_kb, main_kb
 from services.google_sheet import get_city_by_order_id
