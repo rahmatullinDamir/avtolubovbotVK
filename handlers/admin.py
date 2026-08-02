@@ -41,7 +41,7 @@ async def admin_stats(message: Message):
 
 
 # Запуск рассылки
-@bot.on.message(text=["/mailing", "!mailing"], state="*")
+@bot.on.message(text=["/mailing", "!mailing"])
 async def mailing_start(message: Message):
     if message.from_id not in get_admins():
         return
