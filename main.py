@@ -3,14 +3,19 @@ import asyncio
 import textwrap
 
 from vkbottle.bot import Message
+
+# 1. Берем ЕДИНСТВЕННОГО бота из конфига.
+# Никаких bot = Bot(token=VK_TOKEN) здесь быть не должно!
 from env.config import bot
 
-from handlers import admin, manager, order, review
+# 2. ЖИЗНЕННО ВАЖНО: импортируем файлы с хендлерами, чтобы код внутри них выполнился!
+# (Проверь точное название твоего файла: order или orders)
+from handlers import admin, manager, orders, review
+
 from keyboards.keyboards import main_kb
 from services.google_sheet import get_user_orders
 
 logging.basicConfig(level=logging.INFO)
-
 
 # --- ОБРАБОТЧИКИ МЕНЮ ---
 @bot.on.message(text="🔍 Мои заказы")
@@ -35,12 +40,8 @@ async def view_orders(message: Message):
 async def info_delivery(message: Message):
     text = textwrap.dedent("""
         💳 ОПЛАТА
-        Все платежи осуществляются по 100% предоплате. Выбирайте наиболее удобный для вас вариант:
-
-        💵 Наличные (для жителей Набережных Челнов).
-        💳 Оплата по ссылке (интернет-эквайринг) или удобные переводы.
-        ...
-        (твой текст)
+        Все платежи осуществляются по 100% предоплате...
+        # (твой текст)
     """).strip()
 
     await message.answer(text)
