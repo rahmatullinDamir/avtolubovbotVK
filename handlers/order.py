@@ -205,7 +205,7 @@ async def process_confirm(message: Message):
     state_data = await bot.state_dispenser.get(message.peer_id)
     data = state_data.payload
 
-    users_info = await bot.api.users.get(message.from_id, fields=["screen_name"])
+    users_info = await bot.api.users.get(user_ids=message.from_id, fields=["screen_name"])
     user = users_info[0]
     username = f"@{user.screen_name}" if user.screen_name else f"vk.com/id{user.id}"
 
