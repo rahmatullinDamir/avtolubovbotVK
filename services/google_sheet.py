@@ -7,7 +7,6 @@ import re
 from datetime import datetime
 
 import gspread
-from aiogram import F, types
 
 from env.config import MSK, MANAGER_CHAT_ID, dp, bot
 from keyboards.keyboards import create_nps_kb
