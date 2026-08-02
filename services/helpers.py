@@ -5,7 +5,6 @@ import os
 from datetime import datetime, timezone, timedelta
 
 import aiohttp
-from aiogram.fsm.context import FSMContext
 
 from env.config import bot
 from states.FSM import OrderForm
