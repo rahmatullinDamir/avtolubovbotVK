@@ -6,7 +6,7 @@ from vkbottle.bot import Bot, Message
 from env.config import VK_TOKEN  # Убедись, что добавил токен сообщества в конфиг
 from keyboards.keyboards import main_kb
 from services.google_sheet import get_user_orders
-from handlers import admin, manager, orders, review
+from handlers import admin, manager, order, review
 
 logging.basicConfig(level=logging.INFO)
 
